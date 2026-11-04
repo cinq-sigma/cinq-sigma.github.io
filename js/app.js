@@ -1620,7 +1620,8 @@
     try { const t = localStorage.getItem(STORE) || localStorage.getItem('modelab.v1'); if (t) saved = JSON.parse(t); } catch (e) { /* rien */ }
     let ok = false;
     if (saved) { try { loadDoc(saved); gotoPage(DOC.cur); ok = true; } catch (e) { ok = false; } }
-    if (!ok) loadExample('rc');
+    // première ouverture : tableau vide (les exemples restent dans le menu Exemples)
+    if (!ok) { setDoc([emptyState()]); $('calcText').value = ''; refreshAll(); switchTab('table'); }
     // suivre le thème clair / sombre
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     const rerender = () => { renderGraphControls(); renderPlot(); if (!$('pane-stats').hidden) renderStats(); };
