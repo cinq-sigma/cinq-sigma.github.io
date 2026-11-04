@@ -1,4 +1,4 @@
-/* MicroLab — jeux de données d'exemple (bruit pseudo-aléatoire reproductible) */
+/* Cinq Sigma — jeux de données d'exemple (bruit pseudo-aléatoire reproductible) */
 (function (root) {
   'use strict';
   function rng(seed) { // mulberry32 + Box-Muller

@@ -1,4 +1,4 @@
-/* MicroLab — moteur de calcul (sans dépendance au DOM)
+/* Cinq Sigma — moteur de calcul (sans dépendance au DOM)
  * Lecture de tableaux texte, ajustement Levenberg-Marquardt,
  * statistiques et loi de Student.
  */

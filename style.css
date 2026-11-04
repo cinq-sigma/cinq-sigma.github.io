@@ -1,4 +1,4 @@
-/* MicroLab — feuille de style
+/* Cinq Sigma — feuille de style
    Mise en page : barre d'outils, tableau à gauche, graphe sur papier millimétré à droite,
    panneau d'analyse sous le graphe. Une seule couleur d'accent (encre bleue) ;
    le modèle est tracé en orange pour se détacher des mesures. */
@@ -328,3 +328,14 @@ td.muted { color: var(--muted); font-family: var(--f-sans) !important; }
 .tcard .sub { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .toolbar { flex-wrap: wrap; row-gap: 6px; }
 .count { white-space: nowrap; }
+
+/* mention des auteurs et de la licence */
+.credits {
+  padding-block: 4px 20px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  color: var(--muted); font-size: 12.5px; line-height: 1.55;
+}
+.credits p { margin: 0; max-width: 120ch; }
+.credits b { color: var(--ink); font-weight: 600; }
+.credits a { color: var(--accent); overflow-wrap: anywhere; }

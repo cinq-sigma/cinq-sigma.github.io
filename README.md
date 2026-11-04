@@ -1,4 +1,6 @@
-# MicroLab
+# Cinq Sigma
+
+**S**tatistiques, **I**ncertitudes, **G**raphes, **M**odélisation et **A**nalyse.
 
 Logiciel de traitement de données expérimentales qui fonctionne dans le navigateur, dans l’esprit de Regressi : tableau de mesures, grandeurs calculées, graphe, modélisation par une fonction avec incertitudes sur les paramètres, statistiques sur des mesures répétées.
 
@@ -22,23 +24,11 @@ Aucun serveur n’est nécessaire : ce sont des fichiers HTML, CSS et JavaScript
 - **Titrages** (onglet Titrage) : titrage pH-métrique par la méthode des tangentes parallèles et par la méthode de la dérivée (maximum de dpH/dV, lissage réglable), pH à la demi-équivalence ; titrage conductimétrique par l’intersection de deux droites, intervalles choisis automatiquement ou à la souris, avec l’incertitude sur V_E.
 - **Sauvegarde** automatique dans le navigateur, export CSV, projet `.json` à rouvrir.
 
-## Mise en ligne sur GitHub Pages
+## Mise en ligne
 
-Le site `mucosmos.github.io` est servi depuis le dépôt `mucosmos/mucosmos.github.io`. Le plus simple est d’y ajouter un dossier :
+Le logiciel est publié par GitHub Pages depuis le dépôt `cinq-sigma/cinq-sigma.github.io` : **https://cinq-sigma.github.io/**.
 
-1. Dans le dépôt `mucosmos.github.io`, créez un dossier `microlab/`.
-2. Copiez-y le contenu de ce dossier : `index.html`, `style.css` et le dossier `js/`.
-3. Validez et poussez :
-   ```bash
-   git add microlab
-   git commit -m "Ajout de MicroLab"
-   git push
-   ```
-4. Après une à deux minutes, le logiciel est accessible à l’adresse **https://mucosmos.github.io/microlab/**.
-
-Sur le site web de GitHub, sans ligne de commande : ouvrez le dépôt, *Add file → Upload files*, glissez les fichiers en conservant le dossier `js/`, puis *Commit changes*.
-
-Autre possibilité : un dépôt séparé nommé `microlab`, avec *Settings → Pages → Deploy from a branch → main / (root)*. L’adresse est alors la même : `https://mucosmos.github.io/microlab/`.
+Pour le mettre à jour, remplacez les fichiers à la racine du dépôt (`index.html`, `style.css`, le dossier `js/`), puis *Commit changes*. Le site est à jour une à deux minutes plus tard.
 
 ## Structure
 
@@ -58,3 +48,9 @@ Bibliothèques chargées depuis jsDelivr : [math.js](https://mathjs.org) (expres
 - Ajustement pondéré par u(y) : C = (JᵀWJ)⁻¹ avec W = 1/u². Si x a aussi une incertitude, la méthode de la variance effective est utilisée : u² = u(y)² + (f′(x)·u(x))².
 - Intervalle à 95 % : ± t·u, t étant le coefficient de Student à n − p degrés de liberté.
 - Dérivée numérique : différences centrées (différences simples aux extrémités). Intégrale : méthode des trapèzes.
+
+## Auteurs et licence
+
+Conception et direction du projet : Cédric Vanden Driessche (2026), professeur de physique-chimie au lycée Charles de Gaulle à Caen (cedric.vanden-driessche@ac-normandie.fr) ; développement du code : Claude (Anthropic), sous sa direction.
+
+Logiciel libre sous licence GNU GPL, version 3 ou ultérieure (fichier `LICENSE`), distribué sans aucune garantie.

@@ -1,9 +1,9 @@
-/* MicroLab — interface */
+/* Cinq Sigma — interface */
 (function () {
   'use strict';
   const E = window.Engine;
   const $ = id => document.getElementById(id);
-  const STORE = 'microlab.v1';
+  const STORE = 'cinqsigma.v1';
   const MAX_ROWS_SHOWN = 2000;
   const CONSTS = new Set(['pi', 'e', 'E', 'PI', 'i', 'Infinity', 'NaN', 'true', 'false', 'null']);
   const COLUMN_FUNCS = { deriv: 2, integ: 2 };
@@ -238,7 +238,7 @@
     const m = Object.assign({}, st.model, { result: null });
     return Object.assign({}, st, { model: m, vars: st.vars.map(v => ({ ...v, data: v.data.map(x => isFinite(x) ? x : null) })) });
   }
-  function serialize() { return { app: 'MicroLab', version: 2, cur: DOC.cur, pages: DOC.pages.map(serializePage) }; }
+  function serialize() { return { app: 'Cinq Sigma', version: 2, cur: DOC.cur, pages: DOC.pages.map(serializePage) }; }
   function loadDoc(o) {
     const list = o && Array.isArray(o.pages) ? o.pages : [o];
     const pages = list.filter(p => p && Array.isArray(p.vars) && p.vars.length).map(deserialize);
@@ -585,8 +585,8 @@
       modeBarButtonsToRemove: ['lasso2d', 'autoScale2d', 'toggleSpikelines'],
       toImageButtonOptions: { filename: (S.title || 'graphe').replace(/[^\w-]+/g, '_'), scale: 2 }
     });
-    if (!el._microlabBound) {
-      el._microlabBound = true;
+    if (!el._cinqSigmaBound) {
+      el._cinqSigmaBound = true;
       el.on('plotly_selected', ev => {
         if (!pickMode) return;
         let r = null;
@@ -1476,7 +1476,7 @@
     if (ext === 'json') {
       reader.onload = () => {
         try { loadDoc(JSON.parse(reader.result)); gotoPage(DOC.cur); toast('Projet ouvert : ' + name); }
-        catch (e) { toast('Ce fichier .json n’est pas un projet MicroLab.'); }
+        catch (e) { toast('Ce fichier .json n’est pas un projet Cinq Sigma.'); }
       };
       reader.readAsText(file); return;
     }
@@ -1566,7 +1566,7 @@
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 2000);
   }
-  const fileBase = () => (S.title || 'microlab').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\w-]+/g, '_');
+  const fileBase = () => (S.title || 'cinq-sigma').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\w-]+/g, '_');
 
   function bindExport() {
     $('btnCsv').onclick = () => {
@@ -1617,7 +1617,7 @@
       toast('Page supprimée');
     };
     let saved = null;
-    try { const t = localStorage.getItem(STORE) || localStorage.getItem('modelab.v1'); if (t) saved = JSON.parse(t); } catch (e) { /* rien */ }
+    try { const t = localStorage.getItem(STORE) || localStorage.getItem('microlab.v1') || localStorage.getItem('modelab.v1'); if (t) saved = JSON.parse(t); } catch (e) { /* rien */ }
     let ok = false;
     if (saved) { try { loadDoc(saved); gotoPage(DOC.cur); ok = true; } catch (e) { ok = false; } }
     // première ouverture : tableau vide (les exemples restent dans le menu Exemples)
